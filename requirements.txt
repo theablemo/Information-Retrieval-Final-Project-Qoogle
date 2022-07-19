@@ -1,0 +1,4 @@
+Django~=4.0.2
+djangorestframework==3.12.1
+django-model-utils==4.2.0
+drf-api-tracking==1.8.0
