@@ -25,7 +25,9 @@ class Query(TimeStampedModel):
         assert self.engine in Query.engines.keys(), "Engine not found."
         raw_responses = Query.engines[Engine(self.engine)].process_query(self.text)
         for raw_response in raw_responses:
-            response, _ = Response.objects.get_or_create(verse=raw_response)
+            response, _ = Response.objects.get_or_create(verse=raw_response['verse'],
+                                                         verse_number=raw_response['verse_number'],
+                                                         surah_name=raw_response['surah_name'])
             self.responses.add(response)
 
 
