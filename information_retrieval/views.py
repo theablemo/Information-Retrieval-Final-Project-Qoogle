@@ -41,7 +41,6 @@ def search_query(request):
 
 
 def search_results(request):
-    error = None
     text = request.GET['text']
 
-    return render(request, 'search_bar.html')
+    return render(request, 'search_results.html', {'text': text})
