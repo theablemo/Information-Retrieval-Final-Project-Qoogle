@@ -1,4 +1,5 @@
 class BaseEngine:
 
-    def process_query(self, text):
+    @staticmethod
+    def process_query(text):
         raise NotImplementedError

@@ -4,8 +4,11 @@ from information_retrieval.lib.quran_mir.preprocess_quran_text import verse_comp
 
 
 class BooleanEngine(BaseEngine):
-    def process_query(self, text):
+
+    @staticmethod
+    def process_query(text):
         docs_complete = [*verse_complete_dict.values()]
         boolean_ir_complete = IRSystem(docs_complete)
         result = boolean_ir_complete.process_query(text, "complete")
+        print(f"result is {result}")
         return result

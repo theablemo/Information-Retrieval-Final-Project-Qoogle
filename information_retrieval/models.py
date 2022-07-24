@@ -2,6 +2,8 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 
 from information_retrieval.enums import Engine
+from information_retrieval.lib.boolean_engine import BooleanEngine
+from information_retrieval.lib.tfidf_engine import TFIDFEngine
 
 
 class Query(TimeStampedModel):
@@ -10,8 +12,8 @@ class Query(TimeStampedModel):
     responses = models.ManyToManyField(to='Response')
 
     engines = {
-        Engine.BOOLEAN: None,
-        Engine.TFIDF: None,
+        Engine.BOOLEAN: BooleanEngine,
+        Engine.TFIDF: TFIDFEngine,
         Engine.FASTTEXT: None,
         Engine.TRANSFORMER: None,
     }
@@ -23,7 +25,7 @@ class Query(TimeStampedModel):
         assert self.engine in Query.engines.keys(), "Engine not found."
         raw_responses = Query.engines[Engine(self.engine)].process_query(self.text)
         for raw_response in raw_responses:
-            response = Response.objects.get_or_create(verse=raw_response)
+            response, _ = Response.objects.get_or_create(verse=raw_response)
             self.responses.add(response)
 
 

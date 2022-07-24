@@ -10,11 +10,12 @@ def search_query(request):
 
 def search_results(request):
     text = request.GET['text']
-    engine = 0  # TODO: read engine from template
+    engine = 1  # TODO: read engine from template
     query, _ = Query.objects.get_or_create(text=text, engine=engine)
     print(query)
     query.process()
-    results = query.responses
+    print(query.responses, 'issssssssssssssssssss')
+    results = list(query.responses.all())
 
     return render(request, 'search_results.html', {'text': text,
                                                    'results': results})
