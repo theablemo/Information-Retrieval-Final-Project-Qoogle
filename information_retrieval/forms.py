@@ -1,6 +1,5 @@
 from django import forms
 
-from information_retrieval.enums import Engine
 from information_retrieval.models import Query
 
 

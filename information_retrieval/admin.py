@@ -1,3 +1,8 @@
-from django.contrib import admin
+from django.contrib.admin import register, ModelAdmin
 
-# Register your models here.
+from information_retrieval.models import Query
+
+
+@register(Query)
+class QueryAdmin(ModelAdmin):
+    list_display = ['text', 'engine']

@@ -1,8 +1,10 @@
 from enum import Enum
+from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
-class Engine(Enum):
-    BOOLEAN = 0
-    TFIDF = 1
-    FASTTEXT = 2
-    TRANSFORMER = 3
+class Engine(models.IntegerChoices):
+    BOOLEAN = 0, _('Boolean Model')
+    TFIDF = 1, _('TF-idf Model')
+    FASTTEXT = 2, _('Fast Text Model')
+    TRANSFORMER = 3, _('Transformer Model')
