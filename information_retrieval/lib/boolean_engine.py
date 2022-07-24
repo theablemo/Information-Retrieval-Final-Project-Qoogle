@@ -14,6 +14,6 @@ class BooleanEngine(BaseEngine):
             {
                 "verse": result,
                 "verse_number": 1,
-                "surah_name": "Baghareh",
+                "surah_number": 2,
             } for result in results
         ]
