@@ -11,10 +11,28 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
+
+
+def import_config(name, default=None, class_type=str):
+    if default is None:
+        name = config(name)
+    else:
+        name = config(name, str(default))
+    if issubclass(class_type, bool):
+        if name == "True":
+            name = True
+        elif name == "False":
+            name = False
+        else:
+            raise ValueError(f"{name} is not {class_type} type")
+    elif issubclass(class_type, int) and str.isnumeric(name):
+        name = int(name)
+    return name
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -26,7 +44,6 @@ SECRET_KEY = 'django-insecure-i29tr$4+flhi+d9a2ictg%8wv)(vp4t2okeqqn508&-cmqarn=
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -70,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'qoogle.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -80,7 +96,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -100,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -111,7 +125,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -125,3 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+BASE_URL = import_config("BASE_URL")

@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from information_retrieval.forms import QueryForm
 from information_retrieval.models import Query
+from qoogle.settings import BASE_URL
 
 
 def search_query(request):
@@ -16,4 +17,5 @@ def search_results(request):
     results = list(query.responses.all())
 
     return render(request, 'search_results.html', {'text': text,
-                                                   'results': results})
+                                                   'results': results,
+                                                   'base_url': BASE_URL})
