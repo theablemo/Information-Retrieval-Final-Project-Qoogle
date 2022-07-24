@@ -3,8 +3,9 @@ from model_utils.models import TimeStampedModel
 
 from information_retrieval.enums import Engine
 from information_retrieval.lib.boolean_engine import BooleanEngine
-from information_retrieval.lib.fasttext_engine import FastTextEngine
 from information_retrieval.lib.tfidf_engine import TFIDFEngine
+# from information_retrieval.lib.fasttext_engine import FastTextEngine
+# from information_retrieval.lib.transformer_engine import TransformerEngine
 
 
 class Query(TimeStampedModel):
@@ -15,8 +16,8 @@ class Query(TimeStampedModel):
     engines = {
         Engine.BOOLEAN: BooleanEngine,
         Engine.TFIDF: TFIDFEngine,
-        Engine.FASTTEXT: FastTextEngine,
-        Engine.TRANSFORMER: None,
+        # Engine.FASTTEXT: FastTextEngine,
+        # Engine.TRANSFORMER: TransformerEngine,
     }
 
     def __str__(self):
@@ -36,4 +37,7 @@ class Response(TimeStampedModel):
     verse = models.CharField(max_length=511)
     verse_number = models.CharField(max_length=511)
     surah_name = models.CharField(max_length=127)
+
+    def __str__(self):
+        return f"{self.verse}"
 
