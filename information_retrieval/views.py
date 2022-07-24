@@ -11,11 +11,12 @@ def search_query(request):
 
 def search_results(request):
     text = request.GET['text']
-    engine = 1  # TODO: read engine from template
+    engine = int(request.GET['engine'])
     query, _ = Query.objects.get_or_create(text=text, engine=engine)
     query.process()
     results = list(query.responses.all())
 
     return render(request, 'search_results.html', {'text': text,
                                                    'results': results,
-                                                   'base_url': BASE_URL})
+                                                   'base_url': BASE_URL,
+                                                   'engine': str(engine)})

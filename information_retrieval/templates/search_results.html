@@ -4138,6 +4138,31 @@ html:not(.zAoYTe) .Tg7LZd:focus {
                                                                 viewBox="0 0 24 24"><path
                                         d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span>
                                     <span class="ACRAdd"></span></div>
+
+                                <input name="engine" type="hidden">
+                                    <select name="engine" id="engines" style="border-width: 0; border-color: #dbdbdb; background-color: white;">
+                                        {% if engine == "0" %}
+                                            <option value=0 selected>Boolean</option>
+                                        {% else %}
+                                            <option value=0> Boolean </option>
+                                        {% endif %}
+                                        {% if engine == "1" %}
+                                            <option value=1 selected> TF-IDF </option>
+                                        {% else %}
+                                            <option value=1> TF-IDF </option>
+                                        {% endif %}
+                                        {% if engine == "2" %}
+                                            <option value=2 selected>Fast Text</option>
+                                        {% else %}
+                                            <option value=2>Fast Text</option>
+                                        {% endif %}
+                                        {% if engine == "3" %}
+                                            <option value=3 selected>Transformer</option>
+                                        {% else %}
+                                            <option value=3>Transformer</option>
+                                        {% endif %}
+                                    </select>
+                                </input>
                                 <div jscontroller="unV4T" class="XDyW0e" aria-label="Search by voice" role="button"
                                      tabindex="0" jsaction="h5M12e;rcuQ6b:npT2md"
                                      data-ved="0ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQvs8DCA0">
@@ -5191,9 +5216,9 @@ html:not(.zAoYTe) .Tg7LZd:focus {
                                                     data-ved="2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQFnoECCUQAQ"
                                                     ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQFnoECCUQAQ"><br>
                                                 <h3 class="LC20lb MBeuO DKV0Md">{{ result.verse }}</h3>
-                                                <!--                                                <div class="TbwUpd NJjxre"><cite class="iUh30 qLRx3b tjvcx" role="text">https://www.who.int<span-->
-                                                <!--                                                        class="dyjrff qzEoUe" role="text"> › emergencies › diseases › global-r...</span></cite>-->
-                                                <!--                                                </div>-->
+                                                                                                <div class="TbwUpd NJjxre"><cite class="iUh30 qLRx3b tjvcx" role="text">https://www.who.int<span
+                                                                                                        class="dyjrff qzEoUe" role="text"> › emergencies › diseases › global-r...</span></cite>
+                                                                                                </div>
                                             </a>
                                                 <div class="B6fmyf">
                                                     <div class="TbwUpd"><cite class="iUh30 qLRx3b tjvcx" role="text">https://www.who.int<span
@@ -5232,18 +5257,18 @@ html:not(.zAoYTe) .Tg7LZd:focus {
                                         <div class="NJo7tc Z26q7c uUuwM" data-content-feature="1">
                                             <div class="VwiC3b yXK7lf MUxGbd yDYNvb lyLwlc lEBKkf"
                                                  style="-webkit-line-clamp:2">
-                                                <!--                                                <span>Global <em>research</em> database. WHO is gathering the latest international multilingual scientific findings and knowledge on <em>COVID</em>-19. The global literature cited&nbsp;...-->
-                                                <!--                                                </span>-->
+                                                                                                <span>Global <em>research</em> database. WHO is gathering the latest international multilingual scientific findings and knowledge on <em>COVID</em>-19. The global literature cited&nbsp;...
+                                                                                                </span>
                                             </div>
                                         </div>
                                         <div class="NJo7tc Z26q7c uUuwM" data-content-feature="2">
-                                            <!--                                            <div class="HiHjCd">‎<a-->
-                                            <!--                                                    ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/publications/m/item/quick-search-guide-who-covid-19-database&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQ0gIoAHoECDYQAQ">News/Updates/Help</a>-->
-                                            <!--                                                · ‎<a ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/teams/blueprint/covid-19&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQ0gIoAXoECDYQAg">R&amp;D-->
-                                            <!--                                                    Blueprint</a> · ‎<a ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/teams/regulation-prequalification/covid-19&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQ0gIoAnoECDYQAw">Regulatory-->
-                                            <!--                                                    updates</a> · ‎<a-->
-                                            <!--                                                        ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov/solidarity-clinical-trial-for-covid-19-treatments&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQ0gIoA3oECDYQBA">Solidarity-->
-                                            <!--                                                    clinical trial</a></div>-->
+                                                                                        <div class="HiHjCd">‎<a
+                                                                                                ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/publications/m/item/quick-search-guide-who-covid-19-database&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQ0gIoAHoECDYQAQ">News/Updates/Help</a>
+                                                                                            · ‎<a ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/teams/blueprint/covid-19&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQ0gIoAXoECDYQAg">R&amp;D
+                                                                                                Blueprint</a> · ‎<a ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/teams/regulation-prequalification/covid-19&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQ0gIoAnoECDYQAw">Regulatory
+                                                                                                updates</a> · ‎<a
+                                                                                                    ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov/solidarity-clinical-trial-for-covid-19-treatments&amp;ved=2ahUKEwiss5Gfu5H5AhVQgFwKHcXpC0MQ0gIoA3oECDYQBA">Solidarity
+                                                                                                clinical trial</a></div>
                                         </div>
                                         <div class="NJo7tc Z26q7c">
                                             <div jscontroller="K6HGfd" id="eob_7" jsdata="fxg5tf;_;CWXA4M"
