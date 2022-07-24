@@ -3,6 +3,7 @@ from model_utils.models import TimeStampedModel
 
 from information_retrieval.enums import Engine
 from information_retrieval.lib.boolean_engine import BooleanEngine
+from information_retrieval.lib.fasttext_engine import FastTextEngine
 from information_retrieval.lib.tfidf_engine import TFIDFEngine
 
 
@@ -14,7 +15,7 @@ class Query(TimeStampedModel):
     engines = {
         Engine.BOOLEAN: BooleanEngine,
         Engine.TFIDF: TFIDFEngine,
-        Engine.FASTTEXT: None,
+        Engine.FASTTEXT: FastTextEngine,
         Engine.TRANSFORMER: None,
     }
 

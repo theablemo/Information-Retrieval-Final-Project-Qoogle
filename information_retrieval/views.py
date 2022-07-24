@@ -11,7 +11,7 @@ def search_query(request):
 
 def search_results(request):
     text = request.GET['text']
-    engine = 1  # TODO: read engine from template
+    engine = 2  # TODO: read engine from template
     query, _ = Query.objects.get_or_create(text=text, engine=engine)
     query.process()
     results = list(query.responses.all())
