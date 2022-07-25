@@ -1,0 +1,53 @@
+version: '3.1'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: NginxDockerfile
+    container_name: nginx
+    restart: always
+#    ports:
+#      - 80:80
+#    command:  >
+#      sh -c "
+#            sleep 1000
+#            "
+    volumes:
+      - static_volume:/tabdeal/tmwm/static/
+      - media_volume:/tabdeal/tmwm/media/
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - tmwm
+    network_mode: "host"
+  tmwm:
+    build: .
+    container_name: tmwm
+    restart: always
+#    depends_on:
+#      - db
+    env_file:
+      - .env
+    command: >
+      sh -c "
+              ./manage.py makemigrations;
+              ./manage.py migrate;
+              ./manage.py collectstatic --noinput;
+              ./manage.py createsuperuser --noinput; 
+              printenv | grep -v "no_proxy" >> /etc/environment;
+              uwsgi --chdir=./ \
+                    --module=tmwm.wsgi:application \
+                    --http=0.0.0.0:8000  \
+                    --env DJANGO_SETTINGS_MODULE=tmwm.settings \
+                    --logger file:./logs/uwsgi.log \
+                    --master 
+            "
+    volumes:
+      - .:/tabdeal/tmwm/
+      - static_volume:/tabdeal/tmwm/static/
+      - media_volume:/tabdeal/tmwm/media/
+    network_mode: "host"
+
+volumes:
+  static_volume:
+  media_volume:

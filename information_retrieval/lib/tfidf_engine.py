@@ -1,18 +1,14 @@
 from information_retrieval.lib.base_engine import BaseEngine
 
 from information_retrieval.lib.quran_mir.preprocess_quran_text import quran_normalizer, quran_series
-from information_retrieval.lib.quran_mir.tfidf_vectorizer import get_most_similars
+
+from information_retrieval.lib.quran_mir.quran_ir import TfIdfQuranIR
 
 
 class TFIDFEngine(BaseEngine):
 
     @staticmethod
-    def process_query(text):
-        results = list(get_most_similars(quran_series, quran_normalizer(text), 10)['آیه'])
-        return [
-            {
-                "verse": result,
-                "verse_number": 5,
-                "surah_number": 2,
-            } for result in results
-        ]
+    def process_query(text, k=10):
+        tfidf_quran_ir = TfIdfQuranIR()
+        result_df = tfidf_quran_ir.get_most_similars(quran_normalizer(text), K=k)
+        return BaseEngine.dataframe_to_dict(result_df)

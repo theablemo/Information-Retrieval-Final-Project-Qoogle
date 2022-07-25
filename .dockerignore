@@ -1,0 +1,7 @@
+docker-compose.yml
+Dockerfile
+statics
+media
+collected_static
+static
+venv

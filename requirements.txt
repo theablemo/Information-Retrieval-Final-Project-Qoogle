@@ -2,6 +2,8 @@ Django~=4.0.2
 djangorestframework==3.12.1
 django-model-utils==4.2.0
 drf-api-tracking==1.8.0
+uWSGI==2.0.20
+
 
 camel-tools~=1.4.1
 scipy~=1.8.1
