@@ -3,7 +3,7 @@ import pandas as pd
 import qalsadi.lemmatizer
 from nltk.stem.isri import ISRIStemmer
 import tqdm
-from preprocess_quran_text import quran_series
+from information_retrieval.lib.quran_mir.preprocess_quran_text import quran_series
 
 stemmer = ISRIStemmer()
 lemmer = qalsadi.lemmatizer.Lemmatizer()  # This is a weak Lemmatizer.
