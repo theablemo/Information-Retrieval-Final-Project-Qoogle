@@ -7,8 +7,8 @@ services:
       dockerfile: NginxDockerfile
     container_name: nginx
     restart: always
-#    ports:
-#      - 81:81
+    ports:
+      - 81:81
 #    command:  >
 #      sh -c "
 #            sleep 1000
@@ -19,7 +19,7 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - tmwm
-    network_mode: "host"
+#    network_mode: "host"
   tmwm:
     build: .
     container_name: tmwm
@@ -46,7 +46,7 @@ services:
       - .:/tabdeal/tmwm/
       - static_volume:/tabdeal/tmwm/static/
       - media_volume:/tabdeal/tmwm/media/
-    network_mode: "host"
+#    network_mode: "host"
 
 volumes:
   static_volume:
