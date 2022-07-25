@@ -40,6 +40,7 @@ services:
                     --http=0.0.0.0:8000  \
                     --env DJANGO_SETTINGS_MODULE=tmwm.settings \
                     --logger file:./logs/uwsgi.log \
+                    --logto /tmp/mylog.log \
                     --master 
             "
     volumes:
