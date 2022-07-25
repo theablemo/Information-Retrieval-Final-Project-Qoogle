@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from information_retrieval.forms import QueryForm
+from information_retrieval.lib.quran_mir.Query_expansion import QueryExpansion
 from information_retrieval.models import Query
 from qoogle.settings import BASE_URL
 
@@ -18,6 +19,8 @@ def search_results(request):
     cluster = None  # TODO: retrieve cluster
     classification_1 = None  # TODO: retrieve classification type 1
     classification_2 = None  # TODO: retrieve classification type 2
+    query_expansion = QueryExpansion()
+    expanded_query = query_expansion.expand_query(text)
 
     return render(request, 'search_results.html', {'text': text,
                                                    'results': results,
@@ -26,4 +29,5 @@ def search_results(request):
                                                    'cluster': cluster,
                                                    'classification_1': classification_1,
                                                    'classification_2': classification_2,
+                                                   'expanded_query': expanded_query,
                                                    })
