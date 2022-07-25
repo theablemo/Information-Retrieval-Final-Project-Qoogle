@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y vim curl cron build-essential python-de
 
 COPY requirements.txt requirements.txt
 RUN /usr/local/bin/python -m pip install --upgrade pip
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 
 COPY . .
