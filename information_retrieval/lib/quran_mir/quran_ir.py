@@ -34,7 +34,8 @@ class QuranIR:
 class BooleanQuranIR(QuranIR):
 
     def __init__(self):
-        from information_retrieval.lib.quran_mir.preprocess_quran_text import verse_complete_dict_nrmlz, verse_lemma_dict_nrmlz, verse_root_dict_nrmlz, \
+        from information_retrieval.lib.quran_mir.preprocess_quran_text import verse_complete_dict_nrmlz, \
+            verse_lemma_dict_nrmlz, verse_root_dict_nrmlz, \
             verse_complete_dict
         from information_retrieval.lib.quran_mir.boolean_retrieval.ir_system import IRSystem
         super().__init__()
@@ -129,15 +130,17 @@ class FasttextQuranIR(QuranIR):
         # ! cd fastText
         # ! make
         # ! sudo pip install .
-        from tools import create_data_set
+        from information_retrieval.lib.quran_mir.tools import create_data_set
         import subprocess
         import shlex
         if create_dataset:
-            create_data_set(out_dir='./fasttext_model/data_set.txt', merged_df=merged_quran_vec_df_nrmlz,
+            create_data_set(out_dir='./information_retrieval/lib/quran_mir/fasttext_model/data_set.txt',
+                            merged_df=merged_quran_vec_df_nrmlz,
                             expansion_count=5, lemma_rate=0.1, root_rate=0.4)
 
-        command = "./fastText/fasttext skipgram -input ./fasttext_model/data_set.txt -output ./fasttext_model/model " \
-                  "-ws 5 -dim 100 -minn 3 -maxn 10 -epoch 1000 -thread 15 "
+        command = "./information_retrieval/lib/quran_mir/fastText/fasttext skipgram -input ./information_retrieval/lib/quran_mir/fasttext_model/data_set.txt -output ./information_retrieval/lib/quran_mir/fasttext_model/model " \
+                  "-ws 5 -dim 100 -minn 3 -maxn 10 -epoch 200 -thread 3 "
+
         subprocess.run(shlex.split(command))
 
     def sent_to_vec(self, sent: str):
