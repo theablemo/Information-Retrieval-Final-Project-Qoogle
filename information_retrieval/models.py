@@ -45,14 +45,11 @@ class Query(TimeStampedModel):
 
 
 class Response(TimeStampedModel):
-    verse = models.CharField(max_length=511, unique=True)
+    verse = models.CharField(max_length=511)
     complete_verse = models.TextField(null=True, default="")
     verse_number = models.CharField(max_length=511)
     surah_number = models.IntegerField(default=2)
     surah_name = models.CharField(max_length=127, null=True)
-
-    class Meta:
-        unique_together = [['surah_number', 'verse_number']]
 
     @staticmethod
     def retrieve_surah_name(surah_number):
