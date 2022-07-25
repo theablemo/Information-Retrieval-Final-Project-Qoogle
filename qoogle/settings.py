@@ -45,7 +45,7 @@ DEBUG = import_config("DEBUG", class_type=bool)
 
 BASE_URL = import_config("BASE_URL")
 
-ALLOWED_HOSTS = [BASE_URL]
+ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
 
 # Application definition
 
