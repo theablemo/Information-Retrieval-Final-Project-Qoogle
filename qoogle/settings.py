@@ -43,7 +43,9 @@ SECRET_KEY = 'django-insecure-i29tr$4+flhi+d9a2ictg%8wv)(vp4t2okeqqn508&-cmqarn=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = import_config("DEBUG", class_type=bool)
 
-ALLOWED_HOSTS = []
+BASE_URL = import_config("BASE_URL")
+
+ALLOWED_HOSTS = [BASE_URL]
 
 # Application definition
 
@@ -140,4 +142,3 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-BASE_URL = import_config("BASE_URL")
