@@ -203,7 +203,7 @@ class ArabertQuranIR(QuranIR):
         return avg_vec / np.linalg.norm(avg_vec)
 
     def get_most_similars(self, query: str, K=10, check_moghattaeh=True) -> pd.DataFrame:
-        import tools
+        import information_retrieval.lib.quran_mir.tools as tools
         return tools.get_most_similars(merged_corpus_embeddings=self.merged_corpus_embeddings,
                                        query_vec=self.sent_to_vec(query),
                                        K=K,
