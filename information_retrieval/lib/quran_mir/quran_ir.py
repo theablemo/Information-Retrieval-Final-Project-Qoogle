@@ -174,7 +174,7 @@ class ArabertQuranIR(QuranIR):
         super().__init__()
         self.algorithm = 'Arabert'
         self.tfidf_quran_ir = TfIdfQuranIR()
-        model_name = "aubmindlab/bert-base-arabertv2"
+        model_name = "./bert-base-arabertv2"
         self.arabert_prep = ArabertPreprocessor(model_name=model_name)
         self.model = AutoModel.from_pretrained(model_name)
         self.model.eval()
@@ -195,6 +195,7 @@ class ArabertQuranIR(QuranIR):
         self.count += 1
         if self.count % 1000 == 0:
             print(self.count)
+            print('\033[1;32m @@@@@@@@@@@@@@@@@@@@ ArabertQuranIR:' + f'{self.count}' + ' @@@@@@@@@@@@@@@@@@@\033[0m')
         avg_vec = np.average(a=embeddings_text_only.detach().numpy(), weights=[self.tfidf_quran_ir.get_word_idf(
             quran_normalizer(word)) if '+' not in word else 0 for word in tokens], axis=0)
         if np.linalg.norm(avg_vec) == 0:
