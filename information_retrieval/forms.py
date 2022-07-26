@@ -16,5 +16,5 @@ class QueryForm(forms.ModelForm):
         text = cleaned_data.get('text')
         engine = cleaned_data.get('engine')
         if engine:
-            if not 0 <= engine <= 3:
+            if not 0 <= engine <= 4:
                 self.add_error('engine', 'Engine should be in [0, 3] range.')
