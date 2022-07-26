@@ -46,6 +46,7 @@ class BooleanQuranIR(QuranIR):
             *verse_complete_dict_nrmlz.values()], [*verse_lemma_dict_nrmlz.values()], [*verse_root_dict_nrmlz.values()]
         self.boolean_ir_complete, self.boolean_ir_lemma, self.boolean_ir_root = IRSystem(self.docs_complete), IRSystem(
             self.docs_lemma), IRSystem(self.docs_root)
+        print('Init BooleanQuranIR')
 
     def get_most_similars(self, query: str, K=10, check_moghattaeh=False) -> pd.DataFrame:
         result = self.boolean_ir_complete.process_query(query.split(), "complete")
@@ -86,6 +87,7 @@ class TfIdfQuranIR(QuranIR):
         self.words = self.vectorizer.get_feature_names()
         self.idf_mat = self.vectorizer.idf_
         self.median_idf = (np.max(self.idf_mat) + np.min(self.idf_mat)) / 2
+        print('Init TfIdfQuranIR')
 
     def get_most_similars(self, query: str, K=10, check_moghattaeh=False) -> pd.DataFrame:
         from sklearn.metrics.pairwise import linear_kernel
@@ -123,6 +125,7 @@ class FasttextQuranIR(QuranIR):
         self.model = fasttext.load_model('information_retrieval/lib/quran_mir/fasttext_model/model.bin')
         self.tfidf_quran_ir = TfIdfQuranIR()
         self.merged_corpus_embeddings = merged_quran_vec_df_nrmlz.applymap(self.sent_to_vec)
+        print('Init FasttextQuranIR')
 
     @staticmethod
     def train(create_dataset=False):
@@ -155,7 +158,7 @@ class FasttextQuranIR(QuranIR):
         return vec / np.linalg.norm(vec)
 
     def get_most_similars(self, query: str, K=10, check_moghattaeh=False) -> pd.DataFrame:
-        import tools
+        import information_retrieval.lib.quran_mir.tools as tools
         return tools.get_most_similars(merged_corpus_embeddings=self.merged_corpus_embeddings,
                                        query_vec=self.sent_to_vec(query),
                                        K=K,
@@ -179,6 +182,7 @@ class ArabertQuranIR(QuranIR):
         self.count = 0
         # merged_quran_df or merged_quran_vec_df_nrmlz
         self.merged_corpus_embeddings = merged_quran_vec_df_nrmlz.applymap(self.sent_to_vec)
+        print('Init ArabertQuranIR')
 
     def sent_to_vec(self, sent: str):
         if sent == '':
