@@ -39,15 +39,60 @@ ctrl-A-D
 /information_retrieval/lib/quran_mir# mkdir fasttext_model
 ```
 
-### Download and Start ElasticSearch
+### Train Fasttext model
+```shell
+python manage.py train_fasttext
+```
+
+## Elasticsearch
+
+### Download ElasticSearch
 ```shell
 curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 sudo apt update
 sudo apt install elasticsearch
 ```
-
-### Train Fasttext model
+### Configuring security options
 ```shell
-python manage.py train_fasttext
+sudo nano /etc/elasticsearch/elasticsearch.yml
+```
+unconmment `network.host` and `network.port` in the **`elasticsearch.yml`** file and change it like below.
+
+```shell
+network.host: localhost
+network.port: 9200
+```
+Save and exit. Then run the follwing in the terminal.
+
+```shell
+sudo systemctl start elasticsearch
+sudo systemctl enable elasticsearch
+```
+### Test elasticsearch
+```shell
+curl -X GET 'http://localhost:9200'
+```
+You should get something like the following.
+
+```shell
+Output
+{
+  "name" : "elasticsearch-ubuntu20-04",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "qqhFHPigQ9e2lk-a7AvLNQ",
+  "version" : {
+    "number" : "7.6.2",
+    "build_flavor" : "default",
+    "build_type" : "deb",
+    "build_hash" : "ef48eb35cf30adf4db14086e8aabd07ef6fb113f",
+    "build_date" : "2020-03-26T06:34:37.794943Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.4.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+
 ```
