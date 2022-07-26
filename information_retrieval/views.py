@@ -10,6 +10,9 @@ def search_query(request):
     return render(request, 'search_bar.html')
 
 
+query_expansion = QueryExpansion()
+
+
 def search_results(request):
     text = request.GET['text']
     engine = int(request.GET['engine'])
@@ -19,7 +22,6 @@ def search_results(request):
     cluster = None  # TODO: retrieve cluster
     classification_1 = None  # TODO: retrieve classification type 1
     classification_2 = None  # TODO: retrieve classification type 2
-    query_expansion = QueryExpansion()
     expanded_query = query_expansion.expand_query(text)
 
     return render(request, 'search_results.html', {'text': text,
