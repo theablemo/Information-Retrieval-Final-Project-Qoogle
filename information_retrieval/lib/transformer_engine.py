@@ -1,5 +1,4 @@
 from information_retrieval.lib.base_engine import BaseEngine
-
 from information_retrieval.lib.quran_mir.preprocess_quran_text import quran_normalizer
 from information_retrieval.lib.quran_mir.quran_ir import ArabertQuranIR
 
@@ -9,8 +8,9 @@ class TransformerEngine(BaseEngine):
 
     @staticmethod
     def get_ir_model():
-        if TransformerEngine.ir_model is None:
-            TransformerEngine.ir_model = ArabertQuranIR()
+        # if TransformerEngine.ir_model is None:
+        #     TransformerEngine.ir_model = 1
+        #     TransformerEngine.ir_model = ArabertQuranIR()
         return TransformerEngine.ir_model
 
     @staticmethod

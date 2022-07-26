@@ -1,7 +1,5 @@
 from information_retrieval.lib.base_engine import BaseEngine
-
 from information_retrieval.lib.quran_mir.preprocess_quran_text import quran_normalizer, quran_series
-
 from information_retrieval.lib.quran_mir.quran_ir import TfIdfQuranIR
 
 
@@ -11,6 +9,7 @@ class TFIDFEngine(BaseEngine):
     @staticmethod
     def get_ir_model():
         if TFIDFEngine.ir_model is None:
+            TFIDFEngine.ir_model = 1
             TFIDFEngine.ir_model = TfIdfQuranIR()
         return TFIDFEngine.ir_model
 

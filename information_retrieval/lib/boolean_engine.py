@@ -10,6 +10,7 @@ class BooleanEngine(BaseEngine):
     @staticmethod
     def get_ir_model():
         if BooleanEngine.ir_model is None:
+            BooleanEngine.ir_model = 1
             BooleanEngine.ir_model = BooleanQuranIR()
         return BooleanEngine.ir_model
 

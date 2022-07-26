@@ -1,5 +1,4 @@
 from information_retrieval.lib.base_engine import BaseEngine
-
 from information_retrieval.lib.quran_mir.preprocess_quran_text import quran_normalizer
 from information_retrieval.lib.quran_mir.quran_ir import FasttextQuranIR
 
@@ -10,6 +9,7 @@ class FastTextEngine(BaseEngine):
     @staticmethod
     def get_ir_model():
         if FastTextEngine.ir_model is None:
+            FastTextEngine.ir_model = 1
             FastTextEngine.ir_model = FasttextQuranIR()
         return FastTextEngine.ir_model
 
