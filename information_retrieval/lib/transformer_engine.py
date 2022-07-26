@@ -8,9 +8,9 @@ class TransformerEngine(BaseEngine):
 
     @staticmethod
     def get_ir_model():
-        # if TransformerEngine.ir_model is None:
-        #     TransformerEngine.ir_model = 1
-        #     TransformerEngine.ir_model = ArabertQuranIR()
+        if TransformerEngine.ir_model is None:
+            TransformerEngine.ir_model = 1
+            TransformerEngine.ir_model = ArabertQuranIR()
         return TransformerEngine.ir_model
 
     @staticmethod

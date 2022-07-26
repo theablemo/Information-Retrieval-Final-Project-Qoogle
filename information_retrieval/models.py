@@ -7,7 +7,7 @@ from information_retrieval.lib.boolean_engine import BooleanEngine
 from information_retrieval.lib.surah_metadata import surah_metas
 from information_retrieval.lib.tfidf_engine import TFIDFEngine
 from information_retrieval.lib.fasttext_engine import FastTextEngine
-# from information_retrieval.lib.transformer_engine import TransformerEngine
+from information_retrieval.lib.transformer_engine import TransformerEngine
 
 
 class Query(TimeStampedModel):
@@ -19,7 +19,7 @@ class Query(TimeStampedModel):
         Engine.BOOLEAN: BooleanEngine,
         Engine.TFIDF: TFIDFEngine,
         Engine.FASTTEXT: FastTextEngine,
-        # Engine.TRANSFORMER: TransformerEngine,
+        Engine.TRANSFORMER: TransformerEngine,
     }
 
     def __str__(self):
