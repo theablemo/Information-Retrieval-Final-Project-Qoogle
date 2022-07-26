@@ -46,7 +46,7 @@ class BooleanQuranIR(QuranIR):
             *verse_complete_dict_nrmlz.values()], [*verse_lemma_dict_nrmlz.values()], [*verse_root_dict_nrmlz.values()]
         self.boolean_ir_complete, self.boolean_ir_lemma, self.boolean_ir_root = IRSystem(self.docs_complete), IRSystem(
             self.docs_lemma), IRSystem(self.docs_root)
-        print('\033[1;32m @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Init BooleanQuranIR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        print('\033[1;32m @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Init BooleanQuranIR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\033[0m')
 
     def get_most_similars(self, query: str, K=10, check_moghattaeh=False) -> pd.DataFrame:
         result = self.boolean_ir_complete.process_query(query.split(), "complete")
@@ -87,7 +87,7 @@ class TfIdfQuranIR(QuranIR):
         self.words = self.vectorizer.get_feature_names()
         self.idf_mat = self.vectorizer.idf_
         self.median_idf = (np.max(self.idf_mat) + np.min(self.idf_mat)) / 2
-        print('\033[1;32m @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Init TfIdfQuranIR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        print('\033[1;32m @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Init TfIdfQuranIR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\033[0m')
 
     def get_most_similars(self, query: str, K=10, check_moghattaeh=False) -> pd.DataFrame:
         from sklearn.metrics.pairwise import linear_kernel
@@ -125,7 +125,7 @@ class FasttextQuranIR(QuranIR):
         self.model = fasttext.load_model('information_retrieval/lib/quran_mir/fasttext_model/model.bin')
         self.tfidf_quran_ir = TfIdfQuranIR()
         self.merged_corpus_embeddings = merged_quran_vec_df_nrmlz.applymap(self.sent_to_vec)
-        print('\033[1;32m @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Init FasttextQuranIR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        print('\033[1;32m @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Init FasttextQuranIR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\033[0m')
 
     @staticmethod
     def train(create_dataset=False):
@@ -182,7 +182,7 @@ class ArabertQuranIR(QuranIR):
         self.count = 0
         # merged_quran_df or merged_quran_vec_df_nrmlz
         self.merged_corpus_embeddings = merged_quran_vec_df_nrmlz.applymap(self.sent_to_vec)
-        print('\033[1;32m @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Init ArabertQuranIR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        print('\033[1;32m @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Init ArabertQuranIR @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\033[0m')
 
     def sent_to_vec(self, sent: str):
         if sent == '':
