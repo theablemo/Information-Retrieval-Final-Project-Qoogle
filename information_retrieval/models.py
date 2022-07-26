@@ -8,7 +8,7 @@ from information_retrieval.lib.surah_metadata import surah_metas
 from information_retrieval.lib.tfidf_engine import TFIDFEngine
 from information_retrieval.lib.fasttext_engine import FastTextEngine
 from information_retrieval.lib.transformer_engine import TransformerEngine
-
+from information_retrieval.lib.elastic_engine import ElasticEngine
 
 class Query(TimeStampedModel):
     text = models.CharField(max_length=511)
@@ -20,6 +20,7 @@ class Query(TimeStampedModel):
         Engine.TFIDF: TFIDFEngine,
         Engine.FASTTEXT: FastTextEngine,
         Engine.TRANSFORMER: TransformerEngine,
+        Engine.ELASTIC: ElasticEngine,
     }
 
     def __str__(self):
