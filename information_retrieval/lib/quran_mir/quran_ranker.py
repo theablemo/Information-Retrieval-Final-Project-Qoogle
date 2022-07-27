@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import networkx as nx
 from sklearn.preprocessing import normalize
-from preprocess_quran_text import quran_series
+from information_retrieval.lib.quran_mir.preprocess_quran_text import quran_series
 
 
 class QuranRanker:
