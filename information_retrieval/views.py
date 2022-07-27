@@ -19,7 +19,7 @@ def search_results(request):
     engine = int(request.GET['engine'])
     query, _ = Query.objects.get_or_create(text=text, engine=engine)
     query.process()
-    results = list(query.responses.all())
+    results = list(query.responses.order_by('rank'))
     # cluster = None  # TODO: retrieve cluster
     # classification_1 = None  # TODO: retrieve classification type 1
     # classification_2 = None  # TODO: retrieve classification type 2
