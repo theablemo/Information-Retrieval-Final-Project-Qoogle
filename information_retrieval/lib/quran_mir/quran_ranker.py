@@ -26,7 +26,8 @@ class QuranRanker:
         result.index = corpus_embeddings.index
         return result
 
-    def get_pivot_aye(self, verse_number):
+    def get_pivot_aye(self, verse_num):
+        verse_name = self.verse_names[self.verse_names['ردیف'] == verse_num][0]['نام سوره']
+        verse_number = self.verse_names.loc[self.verse_names['نام سوره'] == verse_name]['ردیف'].index[0]
         r = self.get_ranking(self.embeddings[self.embeddings['شماره سوره'] == verse_number])
-        ayeh_index = r['a'].sort_values(ascending=False).index[0]
-        return quran_series[ayeh_index], ayeh_index
+        return quran_series[r['a'].sort_values(ascending=False).index[0]]
