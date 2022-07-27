@@ -41,7 +41,7 @@ def lucky_query(request):
 
 
 def lucky_results(request):
-    text = request.GET['text']
+    text = 'الذین'
     engine = int(request.GET['engine'])
     query, _ = Query.objects.get_or_create(text=text, engine=engine)
     query.process()
