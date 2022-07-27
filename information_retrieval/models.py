@@ -31,7 +31,7 @@ class Query(TimeStampedModel):
     def process(self):
         assert self.engine in Query.engines.keys(), "Engine not found."
         raw_responses = Query.engines[Engine(self.engine)].process_query(self.text)
-        raw_responses = rank.sort_verses(raw_responses)
+        raw_responses = rank.sort_verses(raw_responses, 3)
         for i in range(len(raw_responses)):
             raw_response = raw_responses[i]
             verse_number = raw_response['verse_number']
