@@ -8,7 +8,7 @@ from information_retrieval.lib.quran_mir.preprocess_quran_text import quran_seri
 
 class QuranRanker:
     def __init__(self, fasttext_quran_ir: FasttextQuranIR):
-        self.verse_names = pd.read_csv('data/verse_names.csv')
+        self.verse_names = pd.read_csv('./information_retrieval/lib/quran_mir/data/verse_names.csv')
         self.verse_names.set_index(self.verse_names['ردیف'], inplace=True)
         self.embeddings = fasttext_quran_ir.merged_corpus_embeddings[['original_normalized']].copy()
         self.embeddings['شماره سوره'] = self.embeddings.index.to_series().str.split('##').apply(lambda x: int(x[0]))
