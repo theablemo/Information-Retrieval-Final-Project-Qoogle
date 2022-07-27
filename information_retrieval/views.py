@@ -52,6 +52,8 @@ def lucky_results(request):
     expanded_query = query_expansion.expand_query(text)
 
     return render(request, 'lucky_results.html', {
+        'all_sureh': {i: Response.retrieve_surah_name(i) for i in range(1, 115)},
+
         'text': text,
         'results': results,
         'base_url': BASE_URL,
