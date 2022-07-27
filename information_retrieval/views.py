@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from information_retrieval.lib.quran_mir.Query_expansion import QueryExpansion
-from information_retrieval.models import Query
+from information_retrieval.models import Query, Response
 from qoogle.settings import BASE_URL
 
 query_expansion = QueryExpansion()
@@ -35,7 +35,9 @@ def search_results(request):
 
 
 def lucky_query(request):
-    return render(request, 'lucky_bar.html')
+    return render(request, 'lucky_bar.html', {
+        'all_sureh': {i: Response.retrieve_surah_name(i) for i in range(1, 115)}
+    })
 
 
 def lucky_results(request):
