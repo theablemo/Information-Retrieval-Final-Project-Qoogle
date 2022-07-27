@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-ranks = pd.read_csv('ranks.csv')
+ranks = pd.read_csv('./ranks.csv')
 ranks.head(20)
 
 
