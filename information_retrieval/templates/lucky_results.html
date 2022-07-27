@@ -4085,7 +4085,7 @@ html:not(.zAoYTe) .Tg7LZd:focus {
 <div class="CvDJxb" jscontroller="tIj4fb" jsaction="rcuQ6b:npT2md;" id="searchform">
     <div style="margin-top:-20px" class="sfbg"></div>
     <div class="Q3DXx yIbDgf">
-        <form class="tsf" action="/search" id="tsf" data-submitfalse="text" method="GET" name="f" role="search">
+        <form class="tsf" action="/lucky/search" id="tsf" data-submitfalse="text" method="GET" name="f" role="search">
             <div jsmodel="sj77Re vWNDde P9Kqfe" jsdata="MuIEvd;_;CWXA2k">
                 <div jscontroller="cnjECf" jsmodel="QubRsd a4L2gc QwwFZb BFDhle gx0hCb TnHSdd icv1ie " class="A8SBwf"
                      data-adhe="false" data-alt="false" jsdata="LVplcb;_;"
@@ -4141,32 +4141,10 @@ html:not(.zAoYTe) .Tg7LZd:focus {
 
                                 <input name="engine" type="hidden">
                                 <select name="engine" id="engines"
-                                        style="border-width: 0; border-color: #dbdbdb; background-color: white;">
-                                    {% if engine == "0" %}
-                                    <option value=0 selected>Boolean</option>
-                                    {% else %}
-                                    <option value=0> Boolean</option>
-                                    {% endif %}
-                                    {% if engine == "1" %}
-                                    <option value=1 selected> TF-IDF</option>
-                                    {% else %}
-                                    <option value=1> TF-IDF</option>
-                                    {% endif %}
-                                    {% if engine == "2" %}
-                                    <option value=2 selected>Fast Text</option>
-                                    {% else %}
-                                    <option value=2>Fast Text</option>
-                                    {% endif %}
-                                    {% if engine == "3" %}
-                                    <option value=3 selected>Transformer</option>
-                                    {% else %}
-                                    <option value=3>Transformer</option>
-                                    {% endif %}
-                                    {% if engine == "4" %}
-                                    <option value=4 selected>Elastic Search</option>
-                                    {% else %}
-                                    <option value=4>Elastic Search</option>
-                                    {% endif %}
+                                        style="border-width: 0; border-color: #dbdbdb; background-color: white; ">
+                                    {% for i, name in all_sureh.items %}
+                                    <option value={{i}}>{{name}}</option>
+                                    {% endfor %}
                                 </select>
                                 </input>
                                 <div jscontroller="unV4T" class="XDyW0e" aria-label="Search by voice" role="button"
