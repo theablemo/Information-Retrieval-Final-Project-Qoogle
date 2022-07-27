@@ -1,7 +1,7 @@
 import requests
 from django.db import models
 from model_utils.models import TimeStampedModel
-from rank import rank
+from .rank import rank
 
 from information_retrieval.enums import Engine
 from information_retrieval.lib.boolean_engine import BooleanEngine
