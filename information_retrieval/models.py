@@ -1,6 +1,7 @@
 import requests
 from django.db import models
 from model_utils.models import TimeStampedModel
+from rank import rank
 
 from information_retrieval.enums import Engine
 from information_retrieval.lib.boolean_engine import BooleanEngine
@@ -30,6 +31,7 @@ class Query(TimeStampedModel):
     def process(self):
         assert self.engine in Query.engines.keys(), "Engine not found."
         raw_responses = Query.engines[Engine(self.engine)].process_query(self.text)
+        raw_responses = rank.sort_verses(raw_responses)
         for raw_response in raw_responses:
             verse_number = raw_response['verse_number']
             surah_number = raw_response['surah_number']
