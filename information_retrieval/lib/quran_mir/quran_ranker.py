@@ -1,4 +1,4 @@
-from quran_ir import FasttextQuranIR
+from information_retrieval.lib.quran_mir.quran_ir import FasttextQuranIR
 import numpy as np
 import pandas as pd
 import networkx as nx
