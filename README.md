@@ -1,21 +1,42 @@
-پروژه Quran_Mir به عنوان پروژه‌ی درس بازیابی پیشرفته اطلاعات در بهار ۱۴۰۱ انجام شده‌است. هدف از انجام این پروژه، ایجاد یک موتور جست‌و‌جو برای آیات قرآن بوده است. همچنین به کمک روش‌های آماری و الگوریتمی، ابزارهای دیگری مانند تشخیص آیات محوری، خوشه‌بندی آیات به صورت مفهومی به ۲ دسته (که با دقت ۹۰ درصد، معادل دسته‌بندی مکی/مدنی شد)، و … توسعه داده شده است.<br />
-از آنجا که توسعه و ارزیابی مدل‌ها و ذخیره‌ی نتایج آن‌ها در مقایسه با توسعه‌ی وبسایت و نمایش خروجی‌ها محیط کاملا متفاوتی نیاز دارد، این پروژه در ۲ مخزن ذخیره شده‌است.<br />
-- مخزن اول در آدرس https://github.com/Jarrahi-MM/quran_mir حاوی بخش علمی پروژه است. تمام کد‌ها و نتایج و ارزیابی مدل‌های مختلف در این مخزن قرار دارد. <br />
-- مخزین دوم در آدرس https://github.com/IR1401-Spring-Final-Projects/Quran1401-1_20 حاوی بخش وبسایت پروژه است. برخی کدها به صورت مستقیم از مخزن دیگر در این مخزن قرار گرفته‌اند و برای کدهای دیگر، صرفا خروجی‌های مدل‌ها آورده شده‌اند. برای برخی کدها نیز صرفا نتایج بررسی آیات و سوره‌ها در قالب فایل‌های اکسل در این مخزن قرار گرفته است و صرفا از آن‌ها استفاده می‌شود. <br />
-در هر کدام از مخزن‌ها، در فایل‌های README.md به توضیح ساختار مخزن پرداخته شده‌است. <br />
+# Introduction
 
-## توضیح ساختار پروژه:
-رابط کاربری این پروژه با فریم‌ورک جنگو زده شده است. با استفاده از این فریم‌ورک توانستیم رابطی شبیه به گوگل با اسم Qoogle یا همان Quran Google بسازیم که این رابط اجازه‌ی سرچ عبارات مورد نظر شما را در کل قرآن می‌دهد.
-این پروژه از دیتابیس sqlite استفاده می‌کند و با تکنولوژی‌ داکرکامپوز، داکرایز شده است.
-## نحوه استفاده: 
- کافی است عبارت مورد نظر را در search bar نوشته، سپس موتور جستجوی پیشنهادی خود را از بین موارد زیر که در dropdown کنار search bar موجود است، انتخاب کنید:
-* Boolean
-* TF-IDF
-* Fasttext
-* Transformer
-* Elastic Search
-سپس با زدن دکمه‌ی سرچ، نتایج مورد نظر را ببینید. این نتایج شامل آیه‌هایی است که به ترتیب و با استفاده از الگوریتم‌ page rank به شما نشان داده می‌شوند. هم‌چنین نشانی آیه‌ها یعنی نام سوره و نام آیه و مکی یا مدنی بودن آن‌ها نیز بالای آیه نوشته شده است که می‌توانید با کلیک روی‌ آن‌ها آیه یا سوره آن را باز کنید. در نهایت، در قسمت پایینی هر نتیجه، می‌توانید classification هایی که نشان‌دهنده‌ی سوره‌ی حدس زده شده توسط سامانه و مکی یا مدنی بودن یا کلاستری ۴ دسته‌ای که کردیم را مشاهده کنید و با مقدار واقعی آن‌ها مقایسه کنید.
-در نهایت برای مشاهده‌ی آیه‌ی محوری هر سوره، می‌تواند از دکمه‌ی I'm Feeling Lucky در صفحه‌ی اصلی استفاده کنید.
+Project `Quran MIR` was carried out as the advanced information retrieval project in the spring of 2023. The aim of this project was to create a search engine for Quranic verses. Additionally, with the help of statistical and algorithmic methods, other tools such as identifying central verses, clustering verses conceptually into two categories (which were classified as Meccan/Medinan with 90% accuracy), and more, have been developed.
+
+Since the development and evaluation of models and storing their results require a completely different environment compared to the development of the website and displaying outputs, this project has been stored in 2 repositories.
+
+- The first repository at https://github.com/Jarrahi-MM/quran_mir contains the scientific section of the project. All codes, results, and evaluations of different models are included in this repository.
+- The second repository at https://github.com/IR1401-Spring-Final-Projects/Quran1401-1_20 contains the website section of the project. Some codes have been directly placed from the other repository in this repository, and for other codes, only the outputs of the models have been provided. For some codes, the results of the analysis of verses and chapters have been placed in the form of Excel files in this repository and are only used from there.
+
+In each repository, the repository's structure is explained in the README.md files.
+
+# Collaborators
+
+- [Mohammad Abolnejadian](https://github.com/theablemo)
+- [Amin Ghasemzade](https://github.com/maghasemzadeh)
+- [Aryan Ahadinia](https://github.com/AryanAhadinia)
+- [Mohammadmahdi Jarrahi](https://github.com/Jarrahi-MM)
+
+# Project Structure Description
+
+The user interface of this project has been built using the Django framework. With this framework, we were able to create a search interface similar to Google, named `Qoogle` or Quran Google, which allows you to search for your desired phrases throughout the Quran.
+
+This project uses an SQLite database and has been dockerized with Docker Compose technology.
+
+# Usage
+
+Simply type the desired phrase in the search bar, then select your preferred search engine from the following options available in the dropdown next to the search bar:
+
+- Boolean
+- TF-IDF
+- Fasttext
+- Transformer
+- Elastic Search
+
+Then, by clicking the search button, you can see the desired results. These results include verses that are displayed to you in order using the page rank algorithm. Additionally, the address of the verses, namely the name of the chapter and verse, and whether they are Meccan or Medinan, are written above the verse, which you can click to open the verse or chapter. Finally, at the bottom of each result, you can view the classifications indicating the guessed chapters by the system, whether they are Meccan or Medinan, or the 4-category cluster we have created, and compare them with their actual values.
+
+Finally, to view the central verse of each chapter, you can use the "I'm Feeling Lucky" button on the main page.
+
+# Setup
 
 ### Start docker container
 ```shell
